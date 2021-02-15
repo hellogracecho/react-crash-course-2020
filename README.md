@@ -1,7 +1,7 @@
 # React Crash Course with freeCodeCamp
 
 This is self-studying playground of React 2020 🤓 featuring...<br/>
-Reference [freeCodeCamp](https://youtu.be/4UZrsTqkcW4)
+Reference [freeCodeCamp](https://youtu.be/4UZrsTqkcW4) by [John Smilga](https://github.com/john-smilga)
 
 ## Fundamentals
 
