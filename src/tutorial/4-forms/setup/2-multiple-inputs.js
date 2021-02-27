@@ -10,24 +10,34 @@ const ControlledInputs = () => {
   // const [firstName, setFirstName] = useState('');
   // const [email, setEmail] = useState('');
   // const [age, setAge] = useState('');
-  const [person, setPerson] = useState({firstName: '', email: '', age: ''});
+
+  const [person, setPerson] = useState({
+    firstName: '',
+    email: '',
+    age: '',
+  });
   const [people, setPeople] = useState([]);
 
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setPerson((person) => {
-      return {...person, [name]: value}
-    })
-    // setPerson({...person, [name]: value})
+    setPerson({ ...person, [name]: value });
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(person.firstName && person.age && person.email) {
-      const newPerson = {...person, id: new Date().getTime().toString()}
-      setPeople([...people, newPerson]);
-      setPerson({firstName: '', email: '', age:''});
+    if (person.firstName && person.email && person.age) {
+      setPeople([...people, person]);
+      setPerson({
+        firstName: '',
+        email: '',
+        age: '',
+      });
+      // setPeople((people) => {
+      //   return [...people, person];
+      // });
+    } else {
+      console.log('empty values');
     }
   };
   
@@ -56,7 +66,11 @@ const ControlledInputs = () => {
             />
           </div>
           <div className='form-control'>
+<<<<<<< HEAD
             <label htmlFor='age'>age : </label>
+=======
+            <label htmlFor='age'>Age : </label>
+>>>>>>> dd8d69875f0e3f781d5b22bf013a37dbed113474
             <input
               type='text'
               id='age'
