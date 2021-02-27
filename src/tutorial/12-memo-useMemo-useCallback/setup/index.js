@@ -5,7 +5,19 @@ import { useFetch } from "../../9-custom-hooks/final/2-useFetch";
 // I SWITCHED TO PERMANENT DOMAIN
 const url = "https://course-api.com/javascript-store-products";
 
-// every time props or state changes, component re-renders
+// ** every time props or state changes, component re-renders
+const calculateMostExpensive = (data) => {
+  console.log("hello");
+  return (
+    data.reduce((total, item) => {
+      const price = item.fields.price;
+      if (price >= total) {
+        total = price;
+      }
+      return total;
+    }, 0) / 100
+  );
+};
 
 const Index = () => {
   const { products } = useFetch(url);
@@ -15,11 +27,14 @@ const Index = () => {
   // const addToCart = () => {
   //   setCart(cart + 1);
   // };
-
   // ** useCallback
   const addToCart = useCallback(() => {
     setCart(cart + 1);
   }, [cart]);
+
+  const mostExpensive = useMemo(() => calculateMostExpensive(products), [
+    products,
+  ]);
 
   return (
     <>
@@ -28,6 +43,7 @@ const Index = () => {
         click me
       </button>
       <h3 style={{ marginTop: "3rem" }}>cart: {cart}</h3>
+      <h4>Most Expensive: ${mostExpensive}</h4>
       <BigList products={products} addToCart={addToCart} />
     </>
   );
