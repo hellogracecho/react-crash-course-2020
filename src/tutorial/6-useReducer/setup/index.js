@@ -1,7 +1,6 @@
 import React, { useState, useReducer } from 'react';
 import Modal from './Modal';
 import { data } from '../../../data';
-import { act } from 'react-dom/test-utils';
 // ** reducer function: this is where we deal with state
 // ** always return
 import { reducer } from './reducer';
